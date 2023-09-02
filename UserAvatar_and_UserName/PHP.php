@@ -1,8 +1,9 @@
-<!-- PHP_part -->
+<?php
 
-<!-- Put this in function.php at the THEME of WP -->
+// ----------------------------------------------------------------------
+// Put this in function.php at the THEME of WP
+// Function for Define Logged User Name and his avatar
 
-<!-- Function for Define Logged User Name and his avatar -->
 function print_to_console() {
 	if ( is_user_logged_in() ) {
 		$current_user = wp_get_current_user();
@@ -28,17 +29,10 @@ add_action('wp_ajax_print_to_console', 'print_to_console');
 add_action('wp_ajax_nopriv_print_to_console', 'print_to_console');
 
 
-function enqueue_ajax_script() {
-    wp_enqueue_script('ajax-script', get_template_directory_uri() . '/js/ajax-script.js', array('jquery'), '1.0', true);
-    wp_localize_script('ajax-script', 'ajaxSettings', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-    ));
-}
-
-add_action('wp_enqueue_scripts', 'enqueue_ajax_script');
 
 
-// -----------------------
+
+// ----------------------------------------------------------------------
 
 
 function save_name_and_last_name() {
@@ -64,6 +58,5 @@ function save_name_and_last_name() {
 
 add_action('wp_ajax_save_name_and_last_name', 'save_name_and_last_name');
 add_action('wp_ajax_nopriv_save_name_and_last_name', 'save_name_and_last_name');
-
 
 
